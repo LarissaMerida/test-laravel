@@ -12,15 +12,21 @@
 
     <title>Rockbuzz - Teste Full Stack Laravel</title>
 
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <!-- Bootstrap core CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 </head>
 
 <body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark  static-top">
     <div class="container">
         <a class="navbar-brand" href="#">Rockbuzz Teste Full Stack Laravel</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -36,7 +42,7 @@
                 </li>
                 @auth
                     <li class="nav-item">
-                        <a href="{{ url('/home') }}" class="nav-link">Admin</a>
+                        <a href="{{ route('home') }}" class="nav-link">Admin</a>
                     </li>
                     @else
                         <li class="nav-item">
@@ -57,7 +63,7 @@
 <!-- Page Content -->
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 mt-5">
             <div id="app">
                 <posts></posts>
             </div>

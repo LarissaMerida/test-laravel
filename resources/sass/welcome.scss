@@ -14,7 +14,6 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-//  icons 
 .delete {
   color: $delete;
   font-size: $tam_icons;
@@ -30,8 +29,8 @@
   font-size: $tam_icons;
 }
 
+// @import "compass/css3";
 
-//  buttons
 .btn-create {
   @include button_cor($create, $white);
   @include borda-arredondada(20px);
@@ -44,35 +43,6 @@
   @extend %sombra-padrao;
 }
 
-
-//  start page app
-
-.btn-plus {
-  float: right;
-}
-
-.item {
-  border: 1px solid #ccc;
-  margin: 10px;
-  @extend %sombra-padrao;
-}
-
-.post {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  z-index: 99;
-  width: 800px;
-  height: auto;
-  margin-left: -400px;
-  padding: 10px;
-  background-color: #d5f1e8;
-  color: #333;
-  border: 1px solid #6E6E6E;
-  @include borda-arredondada(40px);
-}
-
-.post a {
-  float: right;
-  color: darken($red, 15);
+.navbar-style {
+  background-color: linear-gradient(to right, $black , rgb(25, 0, 255));
 }

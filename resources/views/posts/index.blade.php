@@ -8,7 +8,10 @@
                     <div class="card-header">Posts</div>
 
                     <div class="card-body">
-                        <a href="{{ route('create') }}">create</a>
+                        <a href="{{ route('create') }}" class="create">
+                            <span class="glyphicon glyphicon-download-alt"></span>
+                        </a>
+                      
                         <table class="table table-bordered">
                             <thead>
                             <tr>
@@ -22,19 +25,13 @@
                                     <td>{{ $post->title }}</td>
                                     <td>
                                         
-                                        
-                                        
-                                        <i class="fas fa-trash"></i>
-                                        <i class="fas fa-bars"></i>
-                                        <i class=""></i>
-                                        <button class="btn btn-warning"> 
-                                            <a href="{{ route('edit', $post->id) }}">edit</a>
-                                        </button>
-                                        <button class="btn btn-danger">
-                                            <a href="{{ route('delete', $post->id) }}">Del</a>
-                                        </button>
-                                        
-                                        
+                                        <a href="{{ route('edit', $post->id) }}" class="edit">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                       
+                                        <a href="{{ route('delete', $post->id) }}" class="delete">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
                                         
                                     </td>
                                 </tr>

@@ -45,7 +45,7 @@
                                     </span>
                                 @endif
                             </div>
-                            <button type="submit" class="btn btn-primary">update</button>
+                            <button type="submit" class="btn btn-edit">update</button>
                         </form>
 
                     </div>

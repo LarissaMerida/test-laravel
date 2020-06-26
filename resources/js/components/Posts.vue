@@ -3,12 +3,16 @@
         <div class="row">
             <div v-for="post in posts" class="col-md-3 item">
                 <p>{{post.title}}</p>
-                <a href="#" @click="apenas(post.id)">detalhes</a>
+                <a href="#" class="btn-plus" @click="apenas(post.id)">
+                    <span class="fa fa-plus"></span>
+                </a>
             </div>
         </div>
 
         <div class="post" v-if="modal">
-            <a href="#" @click="modal = false">fechar</a>
+            <a href="#" @click="modal = false" > 
+                <span class="fa fa-close"></span>
+            </a>
             <h1>{{post.title}}</h1>
             <p>{{post.body}}</p>
             tags:
@@ -54,28 +58,3 @@
     }
 </script>
 
-<style>
-    .item {
-        border: 1px solid #ccc;
-    }
-
-    .post {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        z-index: 99;
-        width: 800px;
-        height: auto;
-        margin-left: -400px;
-        padding: 10px;
-        background-color: #eaeaea;
-        color: #333;
-        border: 1px solid #6E6E6E;
-
-    }
-
-    .post a {
-        float: right;
-        color: red;
-    }
-</style>

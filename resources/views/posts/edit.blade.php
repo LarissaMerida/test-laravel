@@ -8,7 +8,7 @@
                     <div class="card-header">Posts Edit</div>
 
                     <div class="card-body">
-                        <form action="{{ route('update', $post->id) }}" method="post">
+                        <form action="{{ route('update', $post->id) }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="form-group has-feedback{{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label for="totle" class="text-muted">Title</label>
@@ -42,6 +42,28 @@
                                 @if ($errors->has('tags'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('tags') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group has-feedback{{ $errors->has('image') ? ' has-error' : '' }}">
+                                <label for="image" class="text-muted">Image</label>
+                                <input id="image" type="file" value="{{ $post->image }}" name="image"
+                                       class="form-control">
+                                @if ($errors->has('image'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('image') }}</strong>
+                                    </span>
+                                @endif
+                            </div>{{ $post->publish }}{{ $post->image }}
+
+                            <div class="form-group has-feedback{{ $errors->has('publish') ? ' has-error' : '' }}">
+                                <label for="publish" class="text-muted">Publish</label>
+                                <input id="publish" type="radio" value="{{ $post->publish }}" name="publish"
+                                       >
+                                @if ($errors->has('publish'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('publish') }}</strong>
                                     </span>
                                 @endif
                             </div>

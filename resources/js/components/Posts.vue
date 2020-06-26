@@ -2,6 +2,8 @@
     <div>
         <div class="row">
             <div v-for="post in posts" class="col-md-3 item">
+
+                <img src="#" class="card-img-top" alt="">
                 <p>{{post.title}}</p>
                 <a href="#" class="btn-plus" @click="apenas(post.id)">
                     <span class="fa fa-plus"></span>

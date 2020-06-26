@@ -85,17 +85,27 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'image' => 'required|image',
+            'publish' => 'required'
         ]);
-
+        
+        $request->image->storeAs('uploads', $request->image->getClientOriginalName(), 'public');
+        $caminhoArquivo = '/storage/uploads/' . $request->image->getClientOriginalName();
+        
         Post::where('id', $id)->update([
             'title' => $request->title,
             'body' => $request->body,
+            'image' =>  $caminhoArquivo,
+            'publish' => $request->publish
         ]);
+
+        // request()->image->move(public_path('images'));
+        // $upload = $request->image->store('post');
 
         $post = Post::find($id);
         $post->tags()->sync($request->tags);
-
+        //dd($post);
         return redirect('posts');
     }
 

@@ -16,7 +16,7 @@ class PostsController extends Controller
      */
     public function listar()
     {
-        $posts = Post::all();
+        $posts = Post::where('publish', true )->get();
 
         return $posts;
     }

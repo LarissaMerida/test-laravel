@@ -1,13 +1,13 @@
 <template>
-    <div id="element_post">
-        <div class="row">AAAAAAAAAAAAAAAAAAA {{ posts }}
-            <div v-for="item in posts" :key="item.id" class="col-md-3 item">
+    <div>
+        <div class="row">
+            <div v-for="post in posts" class="col-md-3 item">
                 <p>{{post.title}}</p>
                 <a href="#" @click="apenas(post.id)">detalhes</a>
             </div>
         </div>
 
-        <!-- <div class="post" v-if="modal">
+        <div class="post" v-if="modal">
             <a href="#" @click="modal = false">fechar</a>
             <h1>{{post.title}}</h1>
             <p>{{post.body}}</p>
@@ -15,80 +15,43 @@
             <ul class="tags">
                 <li v-for="tag in post.tags">{{ tag }}</li>
             </ul>
-        </div> -->
+        </div>
     </div>
 </template>
 
 <script>
-
-    var example1 = new Vue({
-        el: '#element_post',
-        data:{
-            posts: [],
-            postA: null,
-            modal: false
+    export default {
+        data() {
+            return {
+                posts: [],
+                post: {},
+                modal: false
+            }
         },
-        // data: {
-        //     posts: [],
-        //     postA: null,
-        //     modal: false
-        // },
-         methods: {
+        methods: {
             listar() {
-                console.log("AQUI");
+
                 axios.get('/api/posts').then(response => {
                     this.posts = response.data;
-                    console.log("AQUI222", this.posts);
                 });
+
             },
             apenas(id) {
+
                 axios.get('/api/posts/' + id).then(response => {
                     this.post = response.data;
                     this.abre_modal()
                 });
+
             },
             abre_modal() {
                 this.modal = true
-            },
+            }
         },
         mounted() {
             this.listar()
         }
-    });
-    // export default {
-    //     data() {
-    //         return {
-    //             posts: [],
-    //             postA: null,
-    //             modal: false
-    //         }
-    //     },
-    //     methods: {
-    //         listar() {
-    //             console.log("AQUI");
-    //             axios.get('/api/posts').then(response => {
-    //                 this.posts = response.data;
-    //                 console.log("AQUI222");
-    //                 console.log( this.posts );
-    //             });
-    //             console.log( "SAIU", this.posts );
-    //         },
-    //         apenas(id) {
-
-    //             axios.get('/api/posts/' + id).then(response => {
-    //                 this.post = response.data;
-    //                 this.abre_modal()
-    //             });
-
-    //         },
-    //         abre_modal() {
-    //             this.modal = true
-    //         },
-    //     },
-    //     mounted() {
-    //         this.listar()
-    //     }
-    // }
+    }
 </script>
 
 <style>

@@ -8,7 +8,7 @@
                     <div class="card-header">Posts Create</div>
 
                     <div class="card-body">
-                        <form action="{{ url('posts/store') }}" method="post">
+                        <form action="{{ route('store') }}" method="post">
                             {{ csrf_field() }}
                             <div class="form-group has-feedback{{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label for="title" class="text-muted">Title</label>

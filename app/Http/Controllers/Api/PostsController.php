@@ -2,41 +2,36 @@
 
 namespace App\Http\Controllers\Api;
 
+use \App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PostsController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function listar()
     {
-        $posts = \App\Models\Post::all();
+        $posts = Post::all();
 
-        $collection = collect();
-        foreach ($posts as $post) {
-
-            $tags = \DB::table('tag_post')->where('post_id', '=', $post->id)
-                ->join('tags', 'tag_post.tag_id', '=', 'tags.id')
-                ->get();
-
-            $post->tags = $tags->pluck('name');
-            $collection->push($post);
-        }
-
-        return $collection;
+        return $posts;
     }
 
+    /**
+     * Show the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response in json format.
+     */
     public function apenas($id)
     {
-        $post = \DB::table('posts')
-            ->where('posts.id', '=', $id)
-            ->join('tag_post', 'post_id', '=', 'posts.id')
-            ->first();
+        $post = Post::find($id);
 
-        $tags = \DB::table('tag_post')->where('post_id', '=', $post->id)
-            ->join('tags', 'tag_post.tag_id', '=', 'tags.id')
-            ->get();
-
-        $post->tags = $tags->pluck('name');
+        $post->tags = $post->tags()->pluck('name');
 
         return response()->json($post);
     }

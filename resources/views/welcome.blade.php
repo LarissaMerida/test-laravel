@@ -11,15 +11,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Rockbuzz - Teste Full Stack Laravel</title>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
@@ -54,14 +48,14 @@
                                 <a href="{{ route('register') }}" class="nav-link">Register</a>
                             </li>
                         @endif
-                    @endauth
+                        @endauth
             </ul>
         </div>
     </div>
 </nav>
 
 <!-- Page Content -->
-<div class="container mt-4">
+<div class="container">
     <div class="row">
         <div class="col-lg-12">
             <div id="app">

@@ -22,9 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('/posts')->group(function(){
     Route::get('', 'PostsController@listar');
     
-    Route::get('/create', 'PostsController@criar');
-    Route::post('/store', 'PostsController@salvar');
-    Route::get('/edit/{id}', 'PostsController@editar');
-    Route::post('/update/{id}', 'PostsController@atualizar');
-    Route::get('/destroy/{id}', 'PostsController@deletar');
+    Route::get('/create', 'PostsController@criar')->name('create');
+    Route::post('/store', 'PostsController@salvar')->name('store');
+    Route::get('/edit/{id}', 'PostsController@editar')->name('edit');
+    Route::post('/update/{id}', 'PostsController@atualizar')->name('update');
+    Route::get('/destroy/{id}', 'PostsController@deletar')->name('delete');
 });

@@ -8,7 +8,7 @@
                     <div class="card-header">Posts</div>
 
                     <div class="card-body">
-                        <a href="{{ url('posts/create') }}">create</a>
+                        <a href="{{ route('create') }}">create</a>
                         <table class="table table-bordered">
                             <thead>
                             <tr>
@@ -28,11 +28,10 @@
                                         <i class="fas fa-bars"></i>
                                         <i class=""></i>
                                         <button class="btn btn-warning"> 
-                                            <a href="{{ url('posts/edit/' . $post->id) }}">edit</a>
+                                            <a href="{{ route('edit', $post->id) }}">edit</a>
                                         </button>
                                         <button class="btn btn-danger">
-                                            <a href="{{ url('posts/destroy/' . $post->id) }}" >Del
-                                            </a>
+                                            <a href="{{ route('delete', $post->id) }}">Del</a>
                                         </button>
                                         
                                         

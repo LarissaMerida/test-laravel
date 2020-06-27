@@ -46,21 +46,27 @@
                                 @endif
                             </div>
 
-                            <div class="form-group has-feedback{{ $errors->has('image') ? ' has-error' : '' }}">
+                            <div class="form-group has-feedback{{ $errors->has('image')  ? ' has-error' : '' }}">
                                 <label for="image" class="text-muted">Image</label>
-                                <input id="image" type="file" value="{{ $post->image }}" name="image"
-                                       class="form-control">
-                                @if ($errors->has('image'))
+                                <input id="image" type="file" src="/storage/{{ $post->image }}" name="image"
+                                    class="file-chooser" accept="image/*">
+                                
+                                @if ($errors->has('image')   )
                                     <span class="help-block">
                                         <strong>{{ $errors->first('image') }}</strong>
                                     </span>
                                 @endif
-                            </div>{{ $post->publish }}{{ $post->image }}
+                            </div>{{ $post->image }}
 
                             <div class="form-group has-feedback{{ $errors->has('publish') ? ' has-error' : '' }}">
                                 <label for="publish" class="text-muted">Publish</label>
-                                <input id="publish" type="radio" value="{{ $post->publish }}" name="publish"
-                                       >
+
+                                @if ( $post->publish == true)
+                                    <input id="publish" type="checkbox" name="publish" checked>
+                                @else
+                                    <input id="publish" type="checkbox" name="publish" >
+                                @endif
+
                                 @if ($errors->has('publish'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('publish') }}</strong>

@@ -1757,6 +1757,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37413,7 +37415,7 @@ var render = function() {
         return _c("div", { staticClass: "col-md-3 item" }, [
           _c("img", {
             staticClass: "card-img-top",
-            attrs: { src: "#", alt: "" }
+            attrs: { src: "/storage/" + post.image, alt: "image" }
           }),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(post.title))]),
@@ -37454,7 +37456,7 @@ var render = function() {
           _c("h1", [_vm._v(_vm._s(_vm.post.title))]),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(_vm.post.body))]),
-          _vm._v("\n        tags:\n        "),
+          _vm._v("\n       \n        tags:\n        "),
           _c(
             "ul",
             { staticClass: "tags" },
@@ -37462,7 +37464,9 @@ var render = function() {
               return _c("li", [_vm._v(_vm._s(tag))])
             }),
             0
-          )
+          ),
+          _vm._v(" "),
+          _c("p", [_vm._v("Published at: " + _vm._s(_vm.post.published_at))])
         ])
       : _vm._e()
   ])

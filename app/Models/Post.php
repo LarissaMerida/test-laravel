@@ -14,7 +14,7 @@ class Post extends Model
     protected $table = 'posts';
 
     protected $fillable = [
-        'id', 'title', 'body', 'image', 'publish'
+        'id', 'title', 'body', 'image', 'publish', 'published_at'
     ];
 
     public function has_tag($tag_id)

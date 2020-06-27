@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use \App\Models\Post;
 use \App\Models\Tag;
@@ -47,13 +48,23 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'image' => 'required|image',
+            'publish' => 'required'
         ]);
+
+        $request->image->storeAs('', $request->image->getClientOriginalName(), 'public');
+        $caminhoArquivo =  $request->image->getClientOriginalName();
 
         $post = Post::create([
             'title' => $request->title,
             'body' => $request->body,
+            'image' =>  $caminhoArquivo,
+            'publish' => ($request->publish == "on") ? true : false,
+            'published_at' => ($request->publish == "on" ) ? Carbon::now() : null
         ]);
+
+        //dd( $post, $request);
         
         $post->tags()->attach( $request->tags );
 
@@ -89,23 +100,21 @@ class PostsController extends Controller
             'image' => 'required|image',
             'publish' => 'required'
         ]);
-        
-        $request->image->storeAs('uploads', $request->image->getClientOriginalName(), 'public');
-        $caminhoArquivo = '/storage/uploads/' . $request->image->getClientOriginalName();
+        // dd( ($request->publish == "on") ? true : false );
+
+        $request->image->storeAs('', $request->image->getClientOriginalName(), 'public');
+        $caminhoArquivo =  $request->image->getClientOriginalName();
         
         Post::where('id', $id)->update([
             'title' => $request->title,
             'body' => $request->body,
             'image' =>  $caminhoArquivo,
-            'publish' => $request->publish
+            'publish' => ($request->publish == "on") ? true : false,
+            'published_at' => ($request->publish == "on" ) ? Carbon::now() : null
         ]);
-
-        // request()->image->move(public_path('images'));
-        // $upload = $request->image->store('post');
 
         $post = Post::find($id);
         $post->tags()->sync($request->tags);
-        //dd($post);
         return redirect('posts');
     }
 
@@ -119,6 +128,7 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $post->tags()->delete();
+        $post->delete();
         
         return redirect('posts');
     }

@@ -3,7 +3,7 @@
         <div class="row">
             <div v-for="post in posts" class="col-md-3 item">
 
-                <img src="#" class="card-img-top" alt="">
+                <img  v-bind:src="'/storage/'+post.image"  class="card-img-top" alt="image">
                 <p>{{post.title}}</p>
                 <a href="#" class="btn-plus" @click="apenas(post.id)">
                     <span class="fa fa-plus"></span>
@@ -17,10 +17,12 @@
             </a>
             <h1>{{post.title}}</h1>
             <p>{{post.body}}</p>
+           
             tags:
             <ul class="tags">
                 <li v-for="tag in post.tags">{{ tag }}</li>
             </ul>
+            <p>Published at: {{post.published_at}}</p>
         </div>
     </div>
 </template>

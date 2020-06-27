@@ -56,7 +56,7 @@
                                         <strong>{{ $errors->first('image') }}</strong>
                                     </span>
                                 @endif
-                            </div>{{ $post->image }}
+                            </div>
 
                             <div class="form-group has-feedback{{ $errors->has('publish') ? ' has-error' : '' }}">
                                 <label for="publish" class="text-muted">Publish</label>
